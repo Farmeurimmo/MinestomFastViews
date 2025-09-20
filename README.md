@@ -56,14 +56,14 @@ dependencies {
 
 ```java
 // Create a simple inventory
-FastView fastView = new FastView(6, Component.text("Rangs disponibles"));
+FastView fastView = new FastView(6, Component.text("Ranks"));
 
 fastView.
 
 setItem(0,ItemStack.builder(Material.PAPER)
         .
 
-customName(Component.text("Rang 1").
+customName(Component.text("Rank 1").
 
 color(NamedTextColor.GREEN))
         .
