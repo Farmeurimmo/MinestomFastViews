@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'io.github.gradle-nexus.publish-plugin' version '1.3.0'
 }
 
 group = 'fr.farmeurimmo'
@@ -8,8 +9,10 @@ version = '1.0.0'
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(25))
+        languageVersion.set(JavaLanguageVersion.of(24))
     }
+    withSourcesJar()
+    withJavadocJar()
 }
 
 repositories {
@@ -23,11 +26,13 @@ dependencies {
 publishing {
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Farmeurimmo/MinestomFastViews")
+            name = "OSSRH"
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
             credentials {
-                username = System.getenv("USERNAME")
-                password = System.getenv("TOKEN")
+                username = System.getenv("OSSRH_USERNAME")
+                password = System.getenv("OSSRH_PASSWORD")
             }
         }
     }
@@ -35,8 +40,44 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
             groupId = project.group
-            artifactId = "minestom-fast-views"
+            artifactId = project.name
             version = project.version
+
+            pom {
+                name = 'MinestomFastViews'
+                description = 'A simple and powerful Minestom inventory GUI wrapper'
+                url = 'https://github.com/Farmeurimmo/MinestomFastViews'
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'Farmeurimmo'
+                        name = 'Farmeurimmo'
+                        email = 'contact@farmeurimmo.fr'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/Farmeurimmo/MinestomFastViews.git'
+                    developerConnection = 'scm:git:ssh://github.com:Farmeurimmo/MinestomFastViews.git'
+                    url = 'https://github.com/Farmeurimmo/MinestomFastViews/tree/master'
+                }
+            }
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
 }
