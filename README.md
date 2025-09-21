@@ -33,18 +33,41 @@ with a fluent API and built-in event handling.
 
 ### Gradle
 
+#### Add the repository
+
 ```groovy
-dependencies {
-    implementation 'fr.farmeurimmo:minestom-fast-views:1.0.0'
+maven {
+    name "fr.farmeurimmo"
+    url "https://repo.farmeurimmo.fr/<repository>"
 }
+```
+
+#### Add the dependency
+
+```groovy
+implementation "fr.farmeurimmo:MinestomFastViews:1.0.0"
 ```
 
 ### Maven
 
+#### Add the repository
+
 ```xml
+
+<repository>
+    <id>fr.farmeurimmo.repo</id>
+    <name>Maven Repository | Farmeurimmo</name>
+    <url>https://repo.farmeurimmo.fr/</url>
+</repository>
+```
+
+#### Add the dependency
+
+```xml
+
 <dependency>
     <groupId>fr.farmeurimmo</groupId>
-    <artifactId>minestom-fast-views</artifactId>
+    <artifactId>MinestomFastViews</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
