@@ -35,7 +35,7 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
             groupId = project.group
-            artifactId = project.name
+            artifactId = "minestom-fast-views"
             version = project.version
         }
     }
