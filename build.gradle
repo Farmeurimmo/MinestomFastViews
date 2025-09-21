@@ -24,11 +24,19 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/Farmeurimmo/MinestomFastViews"
+            url = uri("https://maven.pkg.github.com/Farmeurimmo/MinestomFastViews")
             credentials {
                 username = System.getenv("USERNAME")
                 password = System.getenv("TOKEN")
             }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
         }
     }
 }
