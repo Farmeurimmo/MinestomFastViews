@@ -35,17 +35,16 @@ with a fluent API and built-in event handling.
 
 ```groovy
 dependencies {
-    implementation 'fr.farmeurimmo:FastViews:1.0.0'
+    implementation 'fr.farmeurimmo:minestom-fast-views:1.0.0'
 }
 ```
 
 ### Maven
 
 ```xml
-
 <dependency>
     <groupId>fr.farmeurimmo</groupId>
-    <artifactId>FastViews</artifactId>
+    <artifactId>minestom-fast-views</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
