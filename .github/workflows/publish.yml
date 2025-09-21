@@ -1,0 +1,28 @@
+name: Publish to Reposilite
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '25-ae'
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Publish to Reposilite
+        env:
+          REPOSILITE_USERNAME: ${{ secrets.REPOSILITE_USERNAME }}
+          REPOSILITE_PASSWORD: ${{ secrets.REPOSILITE_PASSWORD }}
+        run: ./gradlew publish
+
