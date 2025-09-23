@@ -131,9 +131,7 @@ FastView gui = new FastView(InventoryType.CHEST_3_ROW, Component.text("My GUI"))
 Sets an item in the specified slot without a click handler.
 
 ```java
-fastView.setItem(0,ItemStack.builder(Material.DIAMOND).
-
-build());
+fastView.setItem(0, ItemStack.builder(Material.DIAMOND).build());
 ```
 
 #### `setItem(int slot, ItemStack item, Consumer<InventoryPreClickEvent> clickHandler)`
@@ -141,12 +139,10 @@ build());
 Sets an item in the specified slot with a click handler.
 
 ```java
-fastView.setItem(0,item, event ->{
-Player player = (Player) event.getPlayer();
-    player.
-
-sendMessage(Component.text("Item clicked!"));
-        });
+fastView.setItem(0, item, event -> {
+    Player player = (Player) event.getPlayer();
+    player.sendMessage(Component.text("Item clicked!"));
+});
 ```
 
 #### `addItem(ItemStack item)`
@@ -154,9 +150,7 @@ sendMessage(Component.text("Item clicked!"));
 Adds an item to the next available slot.
 
 ```java
-fastView.addItem(ItemStack.builder(Material.GOLD_INGOT).
-
-build());
+fastView.addItem(ItemStack.builder(Material.GOLD_INGOT).build());
 ```
 
 #### `addItem(ItemStack item, Consumer<InventoryPreClickEvent> clickHandler)`
@@ -164,9 +158,9 @@ build());
 Adds an item to the next available slot with a click handler.
 
 ```java
-fastView.addItem(item, event ->{
-        // Handle click
-        });
+fastView.addItem(item, event -> {
+    // Handle click
+});
 ```
 
 #### `removeItem(int slot)`
@@ -182,9 +176,7 @@ fastView.removeItem(10);
 Updates an item in the specified slot (for already opened inventories).
 
 ```java
-fastView.updateItem(5,ItemStack.builder(Material.EMERALD).
-
-build());
+fastView.updateItem(5, ItemStack.builder(Material.EMERALD).build());
 ```
 
 ### Layout Utilities
@@ -195,12 +187,8 @@ Fills all empty slots with the specified item.
 
 ```java
 fastView.fill(ItemStack.builder(Material.BLACK_STAINED_GLASS_PANE)
-        .
-
-customName(Component.empty())
-        .
-
-build());
+        .customName(Component.empty())
+        .build());
 ```
 
 #### `fill(ItemStack item, Consumer<InventoryPreClickEvent> clickHandler)`
@@ -208,9 +196,7 @@ build());
 Fills all empty slots with the specified item and click handler.
 
 ```java
-fastView.fill(glassPane, event ->event.
-
-setCancelled(true));
+fastView.fill(glassPane, event -> event.setCancelled(true));
 ```
 
 #### `border(ItemStack item)`
@@ -219,12 +205,8 @@ Creates a border around the inventory with the specified item.
 
 ```java
 fastView.border(ItemStack.builder(Material.GRAY_STAINED_GLASS_PANE)
-        .
-
-customName(Component.empty())
-        .
-
-build());
+        .customName(Component.empty())
+        .build());
 ```
 
 #### `border(ItemStack item, Consumer<InventoryPreClickEvent> clickHandler)`
@@ -250,12 +232,10 @@ Creates a border with custom item and click handler.
 Sets a handler for when the inventory is closed.
 
 ```java
-fastView.onClose(event ->{
-Player player = (Player) event.getPlayer();
-    player.
-
-sendMessage(Component.text("Thanks for visiting!"));
-        });
+fastView.onClose(event -> {
+    Player player = (Player) event.getPlayer();
+    player.sendMessage(Component.text("Thanks for visiting!"));
+});
 ```
 
 ### Inventory Control
@@ -352,9 +332,7 @@ FastPaginatedView gui = FastView.paginated(6, Component.text("Shop"), true);
 Adds an item to the pagination system.
 
 ```java
-paginatedView.addPaginatedItem(ItemStack.builder(Material.DIAMOND).
-
-build());
+paginatedView.addPaginatedItem(ItemStack.builder(Material.DIAMOND).build());
 ```
 
 #### `addPaginatedItem(ItemStack item, Consumer<InventoryPreClickEvent> clickHandler)`
@@ -362,12 +340,10 @@ build());
 Adds an item with a click handler to the pagination system.
 
 ```java
-paginatedView.addPaginatedItem(item, event ->{
-Player player = (Player) event.getPlayer();
-    player.
-
-sendMessage(Component.text("Item clicked!"));
-        });
+paginatedView.addPaginatedItem(item, event -> {
+    Player player = (Player) event.getPlayer();
+    player.sendMessage(Component.text("Item clicked!"));
+});
 ```
 
 #### `setMask(String pattern)`
@@ -389,9 +365,7 @@ paginatedView.setMask("""
     """);
 
 // Border pattern
-paginatedView.
-
-setMask("""
+paginatedView.setMask("""
     #########
     #-------#
     #-------#
@@ -407,7 +381,7 @@ Sets custom available slots using slot numbers (legacy method).
 
 ```java
 // Only allow items in specific slots
-paginatedView.setMask(10,11,12,19,20,21,28,29,30);
+paginatedView.setMask(10, 11, 12, 19, 20, 21, 28, 29, 30);
 ```
 
 #### `setNavigationButtons(ItemStack previous, ItemStack next)`
@@ -416,18 +390,8 @@ Customizes the navigation buttons.
 
 ```java
 paginatedView.setNavigationButtons(
-        ItemStack.builder(Material.RED_WOOL).
-
-customName(Component.text("← Back")).
-
-build(),
-    ItemStack.
-
-builder(Material.GREEN_WOOL).
-
-customName(Component.text("Next →")).
-
-build()
+    ItemStack.builder(Material.RED_WOOL).customName(Component.text("← Back")).build(),
+    ItemStack.builder(Material.GREEN_WOOL).customName(Component.text("Next →")).build()
 );
 ```
 
@@ -436,19 +400,15 @@ build()
 Sets the slots for navigation buttons.
 
 ```java
-paginatedView.setNavigationSlots(45,53);
+paginatedView.setNavigationSlots(45, 53);
 ```
 
 #### Navigation Methods
 
 ```java
 paginatedView.nextPage();        // Go to next page
-paginatedView.
-
-previousPage();    // Go to previous page
-paginatedView.
-
-setPage(2);        // Go to specific page
+paginatedView.previousPage();    // Go to previous page
+paginatedView.setPage(2);        // Go to specific page
 
 // Check page status
 boolean hasNext = paginatedView.hasNextPage();
@@ -463,19 +423,19 @@ Since `FastPaginatedView` extends `FastView`, you can use all the standard metho
 
 ```java
 FastPaginatedView gui = FastView.paginated(6, Component.text("Shop"), true)
-        .fillBorder()
-        .setMask("""
-                ---------
-                -#######-
-                -#######-
-                -#######-
-                -#######-
-                ---------
-                """)
-        .onClose(event -> {
-            Player player = (Player) event.getPlayer();
-            player.sendMessage(Component.text("Thanks for visiting!"));
-        });
+    .fillBorder()
+    .setMask("""
+        ---------
+        -#######-
+        -#######-
+        -#######-
+        -#######-
+        ---------
+        """)
+    .onClose(event -> {
+        Player player = (Player) event.getPlayer();
+        player.sendMessage(Component.text("Thanks for visiting!"));
+    });
 ```
 
 ## Examples
@@ -588,35 +548,35 @@ public void openMaskedShop(Player player) {
 
     // Set custom mask pattern using visual string
     shop.setMask("""
-                    ---------
-                    -#######-
-                    -#######-
-                    -#######-
-                    -#######-
-                    ---#-#---
-                    """)
-            .setNavigationSlots(48, 50)
-            .onClose(event -> {
-                Player p = (Player) event.getPlayer();
-                p.sendMessage(Component.text("Thanks for visiting the shop!"));
-            });
+            ---------
+            -#######-
+            -#######-
+            -#######-
+            -#######-
+            ---#-#---
+            """)
+        .setNavigationSlots(48, 50)
+        .onClose(event -> {
+            Player p = (Player) event.getPlayer();
+            p.sendMessage(Component.text("Thanks for visiting the shop!"));
+        });
 
     for (int i = 1; i <= 50; i++) {
         shop.addPaginatedItem(
-                ItemStack.builder(Material.DIAMOND)
-                        .customName(Component.text("Item " + i))
-                        .build(),
-                event -> {
-                    Player clicker = (Player) event.getPlayer();
-                    clicker.sendMessage(Component.text("You clicked item " + i));
-                }
+            ItemStack.builder(Material.DIAMOND)
+                .customName(Component.text("Item " + i))
+                .build(),
+            event -> {
+                Player clicker = (Player) event.getPlayer();
+                clicker.sendMessage(Component.text("You clicked item " + i));
+            }
         );
     }
 
     // Fill non-available slots with glass using FastView method
     shop.fill(ItemStack.builder(Material.BLACK_STAINED_GLASS_PANE)
-            .customName(Component.empty())
-            .build());
+        .customName(Component.empty())
+        .build());
 
     shop.open(player);
 }
@@ -629,25 +589,25 @@ public void openDiamondShop(Player player) {
     FastPaginatedView shop = FastView.paginated(6, Component.text("Diamond Shop"), true);
 
     shop.setMask("""
-                    ----#----
-                    ---###---
-                    --#####--
-                    -#######-
-                    --#####--
-                    ---###---
-                    """)
-            .border(ItemStack.builder(Material.YELLOW_STAINED_GLASS_PANE)
-                    .customName(Component.empty())
-                    .build());
+            ----#----
+            ---###---
+            --#####--
+            -#######-
+            --#####--
+            ---###---
+            """)
+        .border(ItemStack.builder(Material.YELLOW_STAINED_GLASS_PANE)
+            .customName(Component.empty())
+            .build());
 
     for (Material material : List.of(Material.DIAMOND, Material.EMERALD, Material.GOLD_INGOT)) {
         shop.addPaginatedItem(
-                ItemStack.builder(material)
-                        .customName(Component.text("Buy " + material.name()))
-                        .build(),
-                event -> {
-                    // Purchase logic
-                }
+            ItemStack.builder(material)
+                .customName(Component.text("Buy " + material.name()))
+                .build(),
+            event -> {
+                // Purchase logic
+            }
         );
     }
 
