@@ -12,6 +12,7 @@ import net.minestom.server.inventory.Inventory;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +25,7 @@ public class FastView {
     private final Inventory inventory;
     private final Map<Integer, Consumer<InventoryPreClickEvent>> clickHandlers;
     private Consumer<InventoryCloseEvent> closeHandler;
-    private EventNode<InventoryEvent> eventNode;
+    private EventNode<@NotNull InventoryEvent> eventNode;
 
     public FastView(InventoryType type, Component title) {
         this.inventory = new Inventory(type, title);
@@ -199,5 +200,21 @@ public class FastView {
 
     public boolean hasClickHandler(int slot) {
         return clickHandlers.containsKey(slot);
+    }
+
+    public static FastPaginatedView paginated(int rows, Component title) {
+        return new FastPaginatedView(rows, title);
+    }
+
+    public static FastPaginatedView paginated(int rows, Component title, boolean maskEnabled) {
+        return new FastPaginatedView(rows, title, maskEnabled);
+    }
+
+    public static FastPaginatedView paginated(InventoryType type, Component title) {
+        return new FastPaginatedView(type, title);
+    }
+
+    public static FastPaginatedView paginated(InventoryType type, Component title, boolean maskEnabled) {
+        return new FastPaginatedView(type, title, maskEnabled);
     }
 }
