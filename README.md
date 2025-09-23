@@ -46,7 +46,7 @@ maven {
 #### Add the dependency
 
 ```groovy
-implementation "fr.farmeurimmo:MinestomFastViews:1.1.0"
+implementation "fr.farmeurimmo:MinestomFastViews:1.1.1"
 ```
 
 ### Maven
@@ -69,7 +69,7 @@ implementation "fr.farmeurimmo:MinestomFastViews:1.1.0"
 <dependency>
     <groupId>fr.farmeurimmo</groupId>
     <artifactId>MinestomFastViews</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 </dependency>
 ```
 

@@ -69,8 +69,8 @@ public class FastPaginatedView extends FastView {
             }
 
             if (size >= 45) {
-                previousSlot = 39;
-                nextSlot = 41;
+                previousSlot = size - 6;
+                nextSlot = size - 4;
             }
         } else {
             for (int i = 0; i < size; i++) {
