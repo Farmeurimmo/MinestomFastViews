@@ -38,7 +38,7 @@ with a fluent API and built-in event handling.
 ```groovy
 maven {
     name "fr.farmeurimmo"
-    url "https://repo.farmeurimmo.fr/<repository>"
+    url "https://repo.farmeurimmo.fr/releases"
 }
 ```
 
@@ -57,7 +57,7 @@ implementation "fr.farmeurimmo:MinestomFastViews:1.0.0"
 <repository>
     <id>fr.farmeurimmo.repo</id>
     <name>Maven Repository | Farmeurimmo</name>
-    <url>https://repo.farmeurimmo.fr/</url>
+    <url>https://repo.farmeurimmo.fr/releases/</url>
 </repository>
 ```
 
